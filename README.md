@@ -1,4 +1,8 @@
-# Installation
+# C-FREE
+
+**Official repository for** [**"Learning the Neighborhood: Contrast-Free Multimodal Self-Supervised Molecular Graph Pretraining"**](https://arxiv.org/abs/2509.22468), accepted at ICML 2026. 
+
+## Installation
 
 To install the required dependencies, use the following commands:
 
@@ -11,8 +15,8 @@ pip install ogb rdkit schedulefree wandb multimethod matplotlib
 pip install flash-attn --no-build-isolation
 ```
 
-# Experiments
-## Pre-training Experiments
+## Experiments
+### Pre-training Experiments
 
 To run the pre-training pipeline, we use the [GEOM dataset](https://github.com/learningmatter-mit/geom). 
 
@@ -24,7 +28,7 @@ To run the pre-training pipeline, we use the [GEOM dataset](https://github.com/l
 4. Place the extracted files (including `summary_geom.json` and all the pickle files) in: `./data/raw_data/geom/raw/`
 
 
-## MARCEL Experiments
+### MARCEL Experiments
 
 To run the MARCEL experiments:
 
@@ -54,9 +58,37 @@ python main.py
 
 ## Codebase
 
+This work is based on [MolMix](https://github.com/andreimano/MolMix/).
+
 This repository includes modified implementations from:
 - [SchNet](https://github.com/atomistic-machine-learning/SchNet)
 - [PaiNN](https://github.com/atomistic-machine-learning/schnetpack)
 - [ESAN](https://github.com/beabevi/ESAN)
 
 Additionally, various parts of the code are adapted from the [MARCEL repository](https://github.com/SXKDZ/MARCEL).
+
+## Citation
+
+If you build on this work, please cite the following:
+
+```bibtex
+@misc{ariguib2025learningneighborhoodcontrastfreemultimodal,
+      title={Learning the Neighborhood: Contrast-Free Multimodal Self-Supervised Molecular Graph Pretraining}, 
+      author={Boshra Ariguib and Mathias Niepert and Andrei Manolache},
+      year={2025},
+      eprint={2509.22468},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2509.22468}, 
+}
+```
+
+```bibtex
+@misc{manolache2024molmix,
+      title={MolMix: A Simple Yet Effective Baseline for Multimodal Molecular Representation Learning}, 
+      author={Andrei Manolache and Dragos Tantaru and Mathias Niepert},
+      year={2024},
+      booktitle={Machine Learning for Structural Biology Workshop, NeurIPS 2024},
+      url={https://arxiv.org/abs/2410.07981}, 
+}
+```
