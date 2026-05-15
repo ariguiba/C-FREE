@@ -72,15 +72,13 @@ Additionally, various parts of the code are adapted from the [MARCEL repository]
 If you build on this work, please cite the following:
 
 ```bibtex
-@misc{ariguib2025learningneighborhoodcontrastfreemultimodal,
-      title={Learning the Neighborhood: Contrast-Free Multimodal Self-Supervised Molecular Graph Pretraining}, 
+@inproceedings{ariguib2026learning,
+      title={Learning the Neighborhood: Contrast-Free Multimodal Self-Supervised Molecular Graph Pretraining},
       author={Boshra Ariguib and Mathias Niepert and Andrei Manolache},
-      year={2025},
-      eprint={2509.22468},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2509.22468}, 
-}
+      booktitle={Forty-third International Conference on Machine Learning},
+      year={2026},
+      url={https://openreview.net/forum?id=Vbj1jSaqTo}
+      }
 ```
 
 ```bibtex
