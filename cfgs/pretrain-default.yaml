@@ -1,0 +1,113 @@
+# default pretrain file
+wandb:
+    use_wandb: false
+    entity: INSERT YOUR ENTITY HERE
+    project: c-free
+    group: default
+    name: default-pretrain
+
+debug: false
+seed: 1
+scaffold_seed: 1
+
+data_path: ./data/datasets
+
+data:
+    dataset: kraken
+    n_conformers: 1
+    policy: 'subgraphs'
+    subgraph_types: ['5-ego', 'fragments']
+    num_samples: [1, 1]
+    with_3d: true
+    simple: false
+
+
+ssl: true
+ema: [0.9995, 1.0]
+ipe_scale: 1.0
+
+batch_size: 32
+lr: 1.e-4
+start_lr: 2.e-6
+final_lr: 1.0e-07
+
+weight_decay: 0.04
+tf_weight_decay: 0.04
+
+num_runs: 1
+max_epoch: 150
+min_epoch: 5
+patience: 100
+optimizer: Adam
+use_muon: false
+
+train_subset_perc: 1
+norm_target: false
+
+scheduler_type: cos_with_warmup
+scheduler_patience: 50
+scheduler_warmup: 30 
+eval_test: false
+log_grads: false
+
+save_ckpt: true
+
+model:
+    # GIN params
+    n_gnn_layers: 6
+    hidden_dim: 128
+    bn_gin: true
+    per_layer: true
+    per_layer_aggr: "mean"
+
+    with_3d: true
+    with_2d: true
+
+    # Tf params
+    use_tf: true
+    nodes_pool: "cls"
+    subgraph_pool: "mean"
+    model_3d_type: "SchNet"
+
+    tf_hidden_dim: 512
+    n_tf_heads: 4
+    n_tf_layers: 6
+    tf_dropout: 0.05
+
+predictor:
+    use_tf: true
+    n_mlp_layers: 2
+    bn_proj: true
+
+    with_3d: true
+
+    tf_hidden_dim: 512
+    n_tf_heads: 4
+    n_tf_layers: 2
+    tf_dropout: 0.05
+
+    nodes_pool: "cls" 
+    subgraph_pool: "mean"
+
+run_probe: false
+probe:
+    run_every: 10
+    data:
+        datasets: ['kraken_b5', 'kraken_l', 'kraken_burb5', 'kraken_burl']
+        n_conformers: 5
+        policy: 'original'
+        with_3d: true
+        simple: false
+    batch_size: 256
+    n_epochs: 100
+    lr: 7.e-5 
+    norm_target: true
+    subgraph_pool: "mean"
+    weight_decay: 0.04
+    tf_weight_decay: 0.04
+
+baseline:
+    run_baseline: false
+
+
+    

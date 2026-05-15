@@ -1,0 +1,78 @@
+# default finetune file
+wandb:
+    use_wandb: false
+    entity: INSERT YOUR ENTITY HERE
+    project: c-free
+    group: default
+    name: default-finetune
+
+debug: false
+seed: 1
+scaffold_seed: 1
+
+data_path: ./data/datasets
+
+data:
+    dataset: kraken
+    n_conformers: 1
+    policy: 'original'
+    with_3d: true
+    simple: false
+
+
+ssl: false
+
+batch_size: 64
+lr: 5.e-4
+weight_decay: 0.01
+tf_weight_decay: 0.01
+
+num_runs: 3
+max_epoch: 3 #1000
+min_epoch: 3
+patience: 100
+optimizer: Adam
+use_muon: false
+
+train_subset_perc: 1
+norm_target: false
+
+scheduler_type: plateau
+scheduler_patience: 25
+scheduler_warmup: 10 
+eval_test: false
+log_grads: false
+
+load_ckpt: true
+save_ckpt: false
+freeze_backbone: false
+backbone_file: best-models/molmix-3d # REPLACE WITH YOUR PRETRAINED MODEL CKPT FILE PATH
+
+model:
+    # GIN params
+    n_gnn_layers: 6
+    hidden_dim: 128
+    bn_gin: true
+    per_layer: true
+    per_layer_aggr: "mean"
+
+    with_3d: true
+    with_2d: false
+
+    # Tf params
+    use_tf: false
+    nodes_pool: "mean"
+    subgraph_pool: "mean"
+    model_3d_type: "SchNet"
+
+    tf_hidden_dim: 512
+    n_tf_heads: 4
+    n_tf_layers: 6
+    tf_dropout: 0.05
+
+    head: "mlp"
+
+
+
+
+    

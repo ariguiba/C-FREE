@@ -1,0 +1,162 @@
+program: sweep_run.py
+method: bayes
+entity: ariguiba-university-of-stuttgart
+project: ssl-kraken
+group: kraken-sweep
+name: test-sweep
+run_cap: 10
+
+metric:
+  goal: minimize
+  name: mlp/context/B5/mae
+
+parameters:
+  debug:
+    value: false
+  ckpt:
+    value: false
+  create_data_only:
+    value: false
+
+  tokenizer_path:
+    value: "tokenizer.json"
+  dataset:
+    value: kraken
+  data_path:
+    value: ./datasets
+
+  data.target:
+    value: 0
+  data.use_both_datasets:
+    value: false
+  data.num_hops:
+    value: 2
+  data.k:
+    value: 10
+  data.sample_ratio:
+    value: 0.1
+
+  batch_size:
+    values:
+    - 64
+    - 128
+    distribution: categorical
+  lr:
+    min: 5.e-5
+    max: 5.e-2
+    distribution: uniform
+  weight_decay:
+    value: 0.01
+  num_runs:
+    value: 1
+  max_epoch:
+    value: 5
+  min_epoch:
+    value: 5
+  optimizer:
+    value: Adam
+
+  scheduler_type:
+    value: cos_with_warmup
+  scheduler_patience:
+    value: 25
+  scheduler_warmup:
+    value: 10
+  eval_test:
+    value: false
+  target:
+    value: None
+  
+  freeze_backbone:
+    value: false
+  load_ckpt:
+    value: false
+  save_ckpt:
+    value: false
+
+  log_grads:
+    value: true
+  multimodal:
+    value: false
+  use_1d:
+    value: false
+  use_2d:
+    value: true
+  use_3d:
+    value: false
+  norm_target:
+    value: true
+  n_conformers:
+    value: 1
+
+  train_subset_perc:
+    value: 1
+  policy:
+    value: 'sample-all'
+  ssl:
+    value: true
+  ema:
+    value: [0.995, 1.0]
+  ipe_scale:
+    value: 1.0
+  seed:
+    value: 711
+
+  # masked:
+  #   value: false
+  # mask_ratio:
+  #   value: 0.5
+
+  model.n_gnn_layers:
+    value: 4
+  model.hidden_dim:
+    value: 128
+  model.tf_hidden_dim:
+    value: 128
+  model.n_tf_heads:
+    value: 4
+  model.n_tf_layers:
+    value: 2
+  model.tf_dropout:
+    value: 0.05
+  model.loss:
+    value: "SmoothL1"
+  model.bn_gin:
+    value: true
+  model.use_tf:
+    value: true
+  model.nodes_pool:
+    value: "cls"
+  model.subgraph_pool:
+    value: "mean"
+  model.n_proj_layers:
+    value: 2
+  model.bn_proj:
+    value: true
+  model.per_layer:
+    value: true
+  model.per_layer_aggr:
+    value: "project"
+  model.new_arch:
+    value: false
+
+  linprob.run_linprob:
+    value: true
+  linprob.run_context:
+    value: true
+  linprob.run_target:
+    value: false
+  linprob.dataset:
+    value: kraken
+  linprob.policy:
+    value: 'one-ego-nets-and-comp'
+  linprob.run_every:
+    value: 2
+  linprob.target_k:
+    value: 0
+  linprob.scaled_pred:
+    value: false
+  linprob.use_linreg:
+    value: false
+  linprob.mlp_hidden_dim:
+    value: 128
